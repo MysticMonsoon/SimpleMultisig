@@ -1,0 +1,227 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 100%;
+    background: #a4a4a4;
+    min-width: 480px;
+    min-height: 640px;
+    margin: 0;
+    padding: 20px;
+}
+
+#title {
+    font-size: 14px;
+    font-weight: bold;
+    position:absolute;
+    left:70px;
+    text-align:center;
+    margin-top: 10px;
+}
+
+
+/*
+ * since the size of this div is not fixed, overflow hidden causes
+ * this div to fully enclose the menuDiv
+ */
+#menuBar {
+    background: #b8dcd4;
+    width: 100%
+    position:absolute;
+    top: 50px;
+    padding: 5px;
+    overflow: hidden;
+}
+
+#menuDiv {
+    font-size: 14px;
+    font-weight: bold;
+    position: relative;
+    left:70px;
+}
+
+#yourAccountAddr {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    float:right;
+    margin-top: 5px;
+    margin-right: 20px;
+    padding: 10px;
+}
+#yourAccountBalance {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    float:right;
+    position:absolute;
+    right:0px;
+    margin-top: 5px;
+    margin-right: 20px;
+    padding: 10px;
+}
+
+#newWalletDiv, #loadWalletDiv, #viewWalletDiv, #transactionDiv {
+    border: none;
+    margin-top: 40px;
+    padding: 0px;
+    position: absolute;
+    z-index: 0;
+}
+#viewWalletSelectorDiv,
+#transactionWalletSelectorDiv {
+    margin-left: 0px;
+}
+#newWalletInnerDiv, #loadWalletInnerDiv, #viewWalletOuterDiv, #transactionTransactionOuterDiv, #transactionAccountsListOuterDiv {
+    border: 2px solid #b8dcd4;
+    margin-top: 10px;
+    padding: 10px;
+    overflow: hidden;
+}
+
+
+/*
+ * wallet-bar is kind of like the top menu-bar (at least wrt address, balance)
+ */
+#viewWalletBarDiv,
+#transactionWalletBarDiv {
+    background: #b8dcd4;
+    width: 100%
+    margin: 12px;
+    padding: 5px;
+    overflow: hidden;
+}
+#viewContractNameAddr, #viewContractThreshold, #viewContractBalance, #viewContractNonce,
+#transactionContractNameAddr, #transactionContractThreshold, #transactionContractBalance, #transactionContractNonce {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    float:left;
+    margin-left: 0px;
+    padding: 10px;
+}
+
+#transactionTransactionToInput, #transactionTransactionValueInput, #transactionTransactionNonceInput, #transactionTransactionData, #transactionTransactionHash {
+    margin-right: 20px;
+    font-size: 14px;
+}
+#transactionAccountsListDiv {
+    overflow: hidden;
+}
+
+/*
+ * generic classes to hide/show divs
+ */
+div.smwHidden {
+    display:none;
+}
+div.smwVisible {
+    display:block;
+}
+
+
+/*
+ * for subtitles above sections. eg. 'Accounts', 'Transaction Info'
+ */
+span.header {
+    font-size: 14px;
+    font-weight: bold;
+}
+
+/*
+ * for prompts that precede input boxes. eg. 'To:'
+ */
+span.prompt {
+    font-family: 'Arial';
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: top;
+}
+span.min-prompt {
+    font-family: 'Arial';
+    font-size: 14px;
+    font-weight: normal;
+    vertical-align: top;
+    display: inline-block;
+    min-width: 4em;
+}
+
+
+/*
+ * wherever we list accounts
+ */
+DIV.accountListFormTable {
+    display:table;
+    background: #949494;
+    padding: 2px;
+    margin: 2px;
+}
+SPAN.accountListTD {
+    display:table-cell;
+    font-size:14px;
+    width: 100%;
+    padding: 4px;
+    vertical-align: middle;
+}
+
+/*
+ * this row is used for every variety of formtable
+ */
+DIV.tr {
+    display:table-row;
+    width: 100%;
+}
+
+
+/* table modifiers for pretty dynamic forms */
+DIV.formtable         { display:table; background: #b7995d; padding: 2px; margin: 2px; }
+DIV.resultstable      { display:table; background: #858585; padding: 2px; margin: 2px; }
+Button.formtable      { font-size:24px; text-align: center; }
+SPAN.td               { display:table-cell; font-size:24px; width: 100%; padding: 2px;  }
+SPAN.tdvc             { display:table-cell; font-size:24px; width: 100%; padding: 2px; vertical-align: middle; }
+
+/* table modifiers for pretty dynamic forms */
+DIV.finalresultstable {
+    display:table;
+    background: #60ff60;
+    position: absolute;
+    bottom: 0;
+    height: 60px;
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    margin: 12px;
+    padding: 5px;
+}
+
+
+#bigModalDiv {
+    width: 70%;
+    margin: 0 auto;  /* center */
+    margin-top: 100px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    z-index: 1;      /* Sit on top */
+    border: 1px solid black;
+    position: relative;
+}
+
+#modalContentDiv {
+    width: 100%;
+}
+
+
+#bigModalClose {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    padding: 5px;
+}
+
+#bigModalClose:hover,
+#bigModalClose:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#topSection {
+    font-family: 'Lato', sans-serif;
+    background-color: #78a478;
+}

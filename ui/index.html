@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple MultiSig Wallet</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+    <meta http-equiv="Pragma" content="no-cache"/>
+    <meta http-equiv="Expires" content="0"/>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300|Roboto:300i" rel="stylesheet">
+    <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
+    <script type="text/javascript" src="bundle/index_TIMESTAMP_1518651794_.js"></script>
+
+    <script>
+      $(document).ready(function() {
+        $("#newButton").on("click", function()        { index.onNewButton();         });
+        $("#loadButton").on("click", function()       { index.onLoadButton();        });
+        $("#viewButton").on("click", function()       { index.onViewButton();        });
+        $("#tranactionButton").on("click", function() { index.onTransactionButton(); });
+        $("#sourceCodeButton").on("click", function() { index.onSourceCodeButton();  });
+        $("#creditsButton").on("click", function()    { index.onCreditsButton();     });
+        $("#helpButton").on("click", function()       { index.onHelpButton();        });
+      });
+    </script>
+  </head>
+
+  <body>
+    <div id="topBar">
+      <img src="images/riverdimes_logo.png" alt="Logo goes here " width="40px" height="40px"/>
+      <span id="title">Riverdimes Frontend for Lundkvist Simple MultiSig Wallet</span>
+      <input id="yourAccountAddr" size="70" disabled/>
+      <input id="yourAccountBalance" size="15" disabled/>
+    </div>
+    <div id="menuBar">
+      <div id="menuDiv">
+      <button id="newButton" type="button" >New wallet</button>
+      <button id="loadButton" type="button">Import Wallet</button>
+      <button id="viewButton" type="button">View Wallet</button>
+      <button id="tranactionButton" type="button">Transaction</button>
+      <button id="sourceCodeButton" type="button">Source Code</button>
+      <button id="creditsButton" type="button">Credits</button>
+      <button id="helpButton" type="button">Help</button>
+      </div>
+    </div>
+
+
+    <!--
+	 * ==================================================================================================
+	 * new wallet
+	 * ==================================================================================================
+      -->
+    <div id="newWalletDiv" class="smwHidden">
+      <div id="newWalletInnerDiv">
+	<input id="addWalletNameInput" size="50" placeholder="Enter a name for this wallet"/>
+	<p/>
+	<input id="addAccountAddrInput" size="50" placeholder="Address of new account/owner"/>
+	<input id="addAccountLabelInput" size="20" placeholder="Label for new account"/>
+	<button id="addAccountButton" type="button">Add Account</button>
+	<p/>
+	<select id="thresholdSelector" placeholder="Select Threshold">
+	</select>
+	<p/>
+	<div id="newWalletAccountsListHeaderDiv">
+	  <span id="newWalletAccountsListHeader" class="header">Owners</span>
+	</div>
+	<div id="newWalletAccountsListDiv">
+	</div>
+      </div>
+      <button id="deployNewWalletButton" type="button">Deploy This Wallet!</button>
+      <div id="newWalletStatusDiv" style="display: none;"></div>
+      <p>&nbsp;</p>
+    </div>
+
+
+    <!--
+	 * ==================================================================================================
+	 * load wallet
+	 * ==================================================================================================
+      -->
+    <div id="loadWalletDiv" class="smwHidden">
+      <div id="loadWalletInnerDiv">
+	<input id="loadWalletNameInput" size="50" placeholder="Enter a name for this wallet"/>
+	<p/>
+	<input id="loadWalletAddrInput" size="50" placeholder="Enter address of wallet"/>
+	<button id="loadWalletLoadButton" type="button">Load Wallet</button>
+	<p/>
+	<div id="loadWalletThresholdDiv" class="smwHidden">
+	  <input id="loadWalletThreshold" size="15" placeholder="threshold" disabled/>
+	</div>
+	<p/>
+	<div id="loadWalletAccountsListHeaderDiv" class="smwHidden">
+	  <span id="loadWalletAccountsListHeader" class="header">Owners</span>
+	</div>
+	<div id="loadWalletAccountsListDiv">
+	</div>
+      </div>
+      <button id="loadWalletSaveButton" type="button">Save this wallet</button>
+    </div>
+
+
+    <!--
+	 * ==================================================================================================
+	 * view wallet
+	 * ==================================================================================================
+      -->
+    <div id="viewWalletDiv" class="smwHidden">
+      <div id="viewWalletSelectorDiv">
+	<select id="viewWalletSelector" placeholder="no saved wallets">
+	</select>
+      </div>
+      <div id="viewWalletBarDiv">
+	<input id="viewContractNameAddr" size="70" disabled/>
+	<input id="viewContractThreshold" size="15" disabled/>
+	<input id="viewContractBalance" size="15" disabled/>
+	<input id="viewContractNonce" size="15" disabled/>
+      </div>
+      <div id="viewWalletOuterDiv">
+	<input id="viewWalletNameInput" size="50" placeholder="Enter a name for this wallet"/>
+	<p/>
+	<input id="viewWalletAddrInput" size="50" disabled/>
+	<p/>
+	<input id="viewWalletThreshold" size="15" disabled/>
+	<p/>
+	<div id="viewWalletAccountsListHeaderDiv">
+	  <span id="viewWalletAccountsListHeader" class="header">Owners</span>
+	</div>
+	<div id="viewWalletAccountsListDiv">
+	</div>
+      </div>
+      <button id="viewWalletSaveButton" type="button">Save this wallet</button>
+    </div>
+
+
+    <!--
+	 * ==================================================================================================
+	 * transaction
+	 * ==================================================================================================
+      -->
+    <div id="transactionDiv" class="smwHidden">
+      <div id="transactionWalletSelectorDiv">
+	<select id="transactionWalletSelector" placeholder="no saved wallets">
+	</select>
+      </div>
+      <div id="transactionWalletBarDiv">
+	<input id="transactionContractNameAddr" size="70" disabled/>
+	<input id="transactionContractThreshold" size="15" disabled/>
+	<input id="transactionContractBalance" size="15" disabled/>
+	<input id="transactionContractNonce" size="15" disabled/>
+      </div>
+      <div id="transactionTransactionOuterDiv">
+	<div>
+	  <span id="transactionTransactionHeader" class="header">Transaction Info</span>
+	</div>
+	<span class="min-prompt">To:</span>
+	<input id="transactionTransactionToInput" size="50" placeholder="To address"/>
+	<span class="prompt">Value:&nbsp;</span>
+	<input id="transactionTransactionValueInput" size="20" placeholder="Value (in Wei!)"/>
+	<span class="prompt">Nonce:&nbsp;</span>
+	<input id="transactionTransactionNonceInput" size="10" placeholder="Nonce"/>
+	<div id="transactionTransactionDataDiv">
+	  <span class="min-prompt">Data:</span>
+	  <textarea id="transactionTransactionData" rows="3" cols="49" placeholder="Data (optional)">
+	  </textarea>
+	</div>
+	<div id="transactionTransactionHashDiv">
+	  <span class="min-prompt">Hash:</span>
+	  <input id="transactionTransactionHashInput" size="70" placeholder="Computed hash"/>
+	</div>
+      </div>
+      <div id="transactionAccountsListOuterDiv">
+	<span id="transactionAccountsListHeader" class="header">Owner Signatures</span>
+	<div id="transactionAccountsListDiv">
+	</div>
+      </div>
+      <button id="transactionSignButton" type="button">Sign this transaction</button>
+      <button id="transactionExecuteButton" type="button">Execute this transaction</button>
+      <div id="transactionStatusDiv" style="display: none;"></div>
+      <p>&nbsp;</p>
+    </div>
+
+
+    <!--
+	modal for important information
+      -->
+    <div id="bigModalDiv" class="smwHidden">
+      <span id="bigModalClose">&times;</span>
+      <p/>
+      <div id="modalContentDiv">
+      </div>
+    </div>
+
+  </body>
+</html>
