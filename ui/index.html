@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300|Roboto:300i" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="bundle/index_TIMESTAMP_1518651794_.js"></script>
+    <script type="text/javascript" src="bundle/index_TIMESTAMP_1518743798_.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -66,7 +66,6 @@
 	</div>
       </div>
       <button id="deployNewWalletButton" type="button">Deploy This Wallet!</button>
-      <div id="newWalletStatusDiv" style="display: none;"></div>
       <p>&nbsp;</p>
     </div>
 
@@ -173,10 +172,13 @@
       </div>
       <button id="transactionSignButton" type="button">Sign this transaction</button>
       <button id="transactionExecuteButton" type="button">Execute this transaction</button>
-      <div id="transactionStatusDiv" style="display: none;"></div>
       <p>&nbsp;</p>
     </div>
 
+    <div id="statusDiv" style="display: none;">
+      <div id="statusContentDiv" style="padding: 5px;">
+      </div>
+    </div>
 
     <!--
 	modal for important information

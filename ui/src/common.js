@@ -128,18 +128,18 @@ var common = module.exports = {
 
 
     //callback(err, transactionReceipt)
-    waitForTXID: function(txid, desc, statusDiv, callback) {
+    waitForTXID: function(txid, desc, statusDiv, statusContentDiv, callback) {
 	var statusCtr = 0;
 	var statusText = document.createTextNode('No status yet...');
 	//status div starts out hidden
 	statusDiv.style.display = "block";
-	statusDiv.appendChild(statusText);
+	statusContentDiv.appendChild(statusText);
 	var link = document.createElement('a');
 	link.href = 'https://etherscan.io/tx/' + txid;
 	link.innerHTML = "<h3>View transaction</h3>";
 	link.target = '_blank';
 	link.disabled = false;
-	statusDiv.appendChild(link);
+	statusContentDiv.appendChild(link);
 	var timer = setInterval(function() {
 	    statusText.textContent = 'Waiting for ' + desc + ' transaction: ' + ++statusCtr + ' seconds...';
 	    if ((statusCtr & 0xf) == 0) {

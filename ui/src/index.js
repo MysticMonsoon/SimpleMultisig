@@ -108,8 +108,8 @@ var index = module.exports = {
 // called recursively
 //
 function makeNewWalletForm() {
-    var newWalletStatusDiv = document.getElementById('newWalletStatusDiv');
-    newWalletStatusDiv.className = '';
+    var statusDiv = document.getElementById('statusDiv');
+    statusDiv.className = '';
     var newWalletAccountsListDiv = document.getElementById('newWalletAccountsListDiv');
     listAccounts(newWalletAcctList, newWalletLabelList, newWalletAccountsListDiv);
     // set up threshold selector and init new account addr
@@ -169,9 +169,10 @@ function newWalletDeployHandler() {
 	if (!!err || !txid) {
 	    alert('Error in contract deployment transaction!\n\n' + err);
 	} else {
-	    var newWalletStatusDiv = document.getElementById('newWalletStatusDiv');
-	    newWalletStatusDiv.className = 'finalresultstable';
-	    common.waitForTXID(txid, 'wallet deployment', newWalletStatusDiv, function(err, receipt) {
+	    var statusDiv = document.getElementById('statusDiv');
+	    var statusContentDiv = document.getElementById('statusContentDiv');
+	    statusDiv.className = 'finalresultstable';
+	    common.waitForTXID(txid, 'wallet deployment', statusDiv, statusContentDiv, function(err, receipt) {
 		console.log('newWalletDeployHandler: contract address = ' + receipt.contractAddress);
 		//save this wallet
 		var addWalletNameInput = document.getElementById('addWalletNameInput');
