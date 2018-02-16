@@ -21,7 +21,7 @@ var SimpleMultiSigCompiled = module.exports = {
 	'Many thanks to Mr. Lundkvist for this contribution to the Ethereum community.<p/>' +
 	'This front-end (website) code that interfaces-to the Simple MultiSig Wallet was written<br/>' +
 	'by Pratush Bhatt, for Riverdimes, Inc. The source code is open-source and is available<br/>' +
-	'on <a href="https://github.com/MysticMonsoon/TokenAuction">github</a>.<p/>' +
+	'on <a href="https://github.com/MysticMonsoon/TokenAuction" target="_blank">github</a>.<p/>' +
 	'The following copyright notice applies only to the front-end. A similar copyright covers<br/>' +
 	'the contract code.<p/>' +
 	'<br/>' +
@@ -146,7 +146,7 @@ var SimpleMultiSigCompiled = module.exports = {
 	'The screenshot above shows a transaction which will send 0.5 ETH (<b>specified in WEI!</b>) to the Ethereum address 0xffcf8fdee72ac11b5c542428b35eef5769c409f0, which is in this case the address of one of the owners. By default the nonce is set to the current nonce in the wallet. While it is possible to set the nonce to some other value, such a transaction could not be executed until after all previous transactions; that is, transactions will only be processed in order, without any skips.<br/>' +
 	'If you are one of the owners, and you unlock the MetaMask account that is the owner account, then you will be able to sign the transaction. The screenshot shows the transaction signed by the account with the Ethereum address 0x90f8bf6a479f320ead074411a4b0e7944ea8c9c1. Other owners will need to import the wallet; set up the same transaction; and then sign the transaction. All of the signatures can be collected, for example, via email. Finally after collecting the requisite number of signatures, someone (not necessarily an owner), can submit the transaction by clicking the &quot;Execute this transaction&quot; button.<br/>' +
 	'Tips:<br/>' +
-	' * You can use an <a href="https://etherconverter.online/">Ether Unit Converter</a> to convert from ETH to WEI -- Remember, you need to specify the transaction value in WEI!<br/>' +
+	' * You can use an <a href="https://etherconverter.online/" target="_blank">Ether Unit Converter</a> to convert from ETH to WEI -- Remember, you need to specify the transaction value in WEI!<br/>' +
 	' * In order to ensure that you have copied the transaction information correctly from another owner, you can compare the transaction hash. It should match exactly.<br/>' +
 	' * The information in the &quot;Owner Signatures&quot; box is generally not super confidential -- so it can be shared in an email. That is to say, the private keys of the owner accounts cannot be derived from the signatures. Of course, if other information, such as the owner labels is sensitive, then only share this information through a secure communications medium.' +
     '<br/>',
