@@ -47,17 +47,21 @@ var index = module.exports = {
     main: function() {
 	console.log('index.main');
 	//force all pages to hidden
-	hideDiv(document.getElementById('newWalletDiv'));
-	hideDiv(document.getElementById('loadWalletDiv'));
-	hideDiv(document.getElementById('viewWalletDiv'));
-	hideDiv(document.getElementById('transactionDiv'));
+	common.hideDiv(document.getElementById('newWalletDiv'));
+	common.hideDiv(document.getElementById('loadWalletDiv'));
+	common.hideDiv(document.getElementById('viewWalletDiv'));
+	common.hideDiv(document.getElementById('transactionDiv'));
+	common.hideDiv(document.getElementById('statusDiv'));
+	common.hideDiv(document.getElementById('statusContentDiv'));
     },
 
     onNewButton: function() {
-	showDiv(document.getElementById('newWalletDiv'));
-	hideDiv(document.getElementById('loadWalletDiv'));
-	hideDiv(document.getElementById('viewWalletDiv'));
-	hideDiv(document.getElementById('transactionDiv'));
+	common.showDiv(document.getElementById('newWalletDiv'));
+	common.hideDiv(document.getElementById('loadWalletDiv'));
+	common.hideDiv(document.getElementById('viewWalletDiv'));
+	common.hideDiv(document.getElementById('transactionDiv'));
+	common.hideDiv(document.getElementById('statusDiv'));
+	common.hideDiv(document.getElementById('statusContentDiv'));
 	//
 	newWalletAcctList = [];
 	newWalletLabelList = [];
@@ -65,26 +69,32 @@ var index = module.exports = {
     },
 
     onLoadButton: function() {
-	hideDiv(document.getElementById('newWalletDiv'));
-	showDiv(document.getElementById('loadWalletDiv'));
-	hideDiv(document.getElementById('viewWalletDiv'));
-	hideDiv(document.getElementById('transactionDiv'));
+	common.hideDiv(document.getElementById('newWalletDiv'));
+	common.showDiv(document.getElementById('loadWalletDiv'));
+	common.hideDiv(document.getElementById('viewWalletDiv'));
+	common.hideDiv(document.getElementById('transactionDiv'));
+	common.hideDiv(document.getElementById('statusDiv'));
+	common.hideDiv(document.getElementById('statusContentDiv'));
 	loadWallet.doLoadWallet();
     },
 
     onViewButton: function() {
-	hideDiv(document.getElementById('newWalletDiv'));
-	hideDiv(document.getElementById('loadWalletDiv'));
-	showDiv(document.getElementById('viewWalletDiv'));
-	hideDiv(document.getElementById('transactionDiv'));
+	common.hideDiv(document.getElementById('newWalletDiv'));
+	common.hideDiv(document.getElementById('loadWalletDiv'));
+	common.showDiv(document.getElementById('viewWalletDiv'));
+	common.hideDiv(document.getElementById('transactionDiv'));
+	common.hideDiv(document.getElementById('statusDiv'));
+	common.hideDiv(document.getElementById('statusContentDiv'));
 	viewWallet.doViewWallet();
     },
 
     onTransactionButton: function() {
-	hideDiv(document.getElementById('newWalletDiv'));
-	hideDiv(document.getElementById('loadWalletDiv'));
-	hideDiv(document.getElementById('viewWalletDiv'));
-	showDiv(document.getElementById('transactionDiv'));
+	common.hideDiv(document.getElementById('newWalletDiv'));
+	common.hideDiv(document.getElementById('loadWalletDiv'));
+	common.hideDiv(document.getElementById('viewWalletDiv'));
+	common.showDiv(document.getElementById('transactionDiv'));
+	common.hideDiv(document.getElementById('statusDiv'));
+	common.hideDiv(document.getElementById('statusContentDiv'));
 	transaction.doTransaction()
     },
 
@@ -108,8 +118,8 @@ var index = module.exports = {
 // called recursively
 //
 function makeNewWalletForm() {
-    var statusDiv = document.getElementById('statusDiv');
-    statusDiv.className = '';
+    common.hideDiv(document.getElementById('statusDiv'));
+    common.hideDiv(document.getElementById('statusContentDiv'));
     var newWalletAccountsListDiv = document.getElementById('newWalletAccountsListDiv');
     listAccounts(newWalletAcctList, newWalletLabelList, newWalletAccountsListDiv);
     // set up threshold selector and init new account addr
@@ -171,7 +181,6 @@ function newWalletDeployHandler() {
 	} else {
 	    var statusDiv = document.getElementById('statusDiv');
 	    var statusContentDiv = document.getElementById('statusContentDiv');
-	    statusDiv.className = 'finalresultstable';
 	    common.waitForTXID(txid, 'wallet deployment', statusDiv, statusContentDiv, function(err, receipt) {
 		console.log('newWalletDeployHandler: contract address = ' + receipt.contractAddress);
 		//save this wallet
@@ -232,15 +241,15 @@ function doBigModal(content) {
     var modalContentDiv = document.getElementById('modalContentDiv');
     if (modalIsShowing) {
 	modalIsShowing = false;
-	hideDiv(bigModalDiv);
+	common.hideDiv(bigModalDiv);
     } else {
 	modalContentDiv.innerHTML = content;
 	bigModalClose.onclick = function() {
 	    modalIsShowing = false;
-	    hideDiv(bigModalDiv);
+	    common.hideDiv(bigModalDiv);
 	};
 	modalIsShowing = true;
-	showDiv(bigModalDiv);
+	common.showDiv(bigModalDiv);
     }
 }
 
@@ -261,13 +270,4 @@ function addInputToFormTable(prompt, promptClass, input, inputClass, f) {
 	d.appendChild(s);
     }
     f.appendChild(d);
-}
-
-
-function hideDiv(div) {
-    div.className = (div.className).replace('smwVisible', 'smwHidden');
-}
-
-function showDiv(div) {
-    div.className = (div.className).replace('smwHidden', 'smwVisible');
 }

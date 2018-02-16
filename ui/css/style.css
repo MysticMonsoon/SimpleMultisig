@@ -180,7 +180,6 @@ SPAN.tdvc             { display:table-cell; font-size:24px; width: 100%; padding
 
 /* table modifiers for pretty dynamic forms */
 DIV.finalresultstable {
-    display:block;
     background: #60ff60;
     position: absolute;
     left: 0;

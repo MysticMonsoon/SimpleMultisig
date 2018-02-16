@@ -132,7 +132,8 @@ var common = module.exports = {
 	var statusCtr = 0;
 	var statusText = document.createTextNode('No status yet...');
 	//status div starts out hidden
-	statusDiv.style.display = "block";
+	common.showDiv(statusDiv);
+	common.showDiv(statusContentDiv);
 	statusContentDiv.appendChild(statusText);
 	var link = document.createElement('a');
 	link.href = 'https://etherscan.io/tx/' + txid;
@@ -157,6 +158,15 @@ var common = module.exports = {
 		});
 	    }
 	}, 1000);
+    },
+
+
+    hideDiv: function(div) {
+	div.className = (div.className).replace('smwVisible', 'smwHidden');
+    },
+
+    showDiv: function(div) {
+	div.className = (div.className).replace('smwHidden', 'smwVisible');
     },
 
     clearDivChildren: function(div) {

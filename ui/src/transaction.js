@@ -48,8 +48,8 @@ function makeTransactionForm() {
 
 function transactionWalletSelectorHandler() {
     console.log('transactionWalletSelectorHandler');
-    var statusDiv = document.getElementById('statusDiv');
-    statusDiv.className = '';
+    common.hideDiv(document.getElementById('statusDiv'));
+    common.hideDiv(document.getElementById('statusContentDiv'));
     //everything else is initialized in transactionWalletView
     var transactionTransactionHashInput = document.getElementById('transactionTransactionHashInput');
     transactionTransactionHashInput.value = '';
@@ -136,7 +136,6 @@ function executeHandler() {
 	} else {
 	    var statusDiv = document.getElementById('statusDiv');
 	    var statusContentDiv = document.getElementById('statusContentDiv');
-	    statusDiv.className = 'finalresultstable';
 	    common.waitForTXID(txid, 'multisig transaction', statusDiv, statusContentDiv, function(err, receipt) {
 		console.log('executeHandler: receipt.status =  ' + receipt.status + ' (1 => success)');
 		transactionWalletSelectorHandler();
