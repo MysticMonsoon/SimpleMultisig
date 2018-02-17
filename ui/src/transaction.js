@@ -146,6 +146,11 @@ function executeHandler() {
 
 function hashHandler() {
     var transactionTransactionToInput = document.getElementById('transactionTransactionToInput');
+    var destination = transactionTransactionToInput.value;
+    if (!!destination && !common.web3.isAddress(destination)) {
+        alert('Error comupting transaction hash:\n\n' + 'Transaction destination, ' + destination + ' is not a valid address!');
+	return;
+    }
     var transactionTransactionValueInput = document.getElementById('transactionTransactionValueInput');
     var value = transactionTransactionValueInput.value;
     var valueHex = common.web3.toHex(value);

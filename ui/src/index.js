@@ -195,10 +195,20 @@ function newWalletDeployHandler() {
 }
 
 function newWalletAddAccountHandler() {
-    var addAccountButton = document.getElementById('addAccountButton');
-    addAccountButton.removeEventListener('click', newWalletAddAccountHandler);
     var addAccountAddrInput = document.getElementById('addAccountAddrInput');
     var newAccountAddr = addAccountAddrInput.value;
+    if (!common.web3.isAddress(newAccountAddr)) {
+	alert('Error!\n\n' + newAccountAddr + ' is not a valid address!');
+	return;
+    }
+    for (var i = 0; i < newWalletAcctList.length; ++i) {
+	if (newAccountAddr == newWalletAcctList[i]) {
+	    alert('Error!\n\n' + newAccountAddr + ' is already an owner!');
+	    return;
+	}
+    }
+    var addAccountButton = document.getElementById('addAccountButton');
+    addAccountButton.removeEventListener('click', newWalletAddAccountHandler);
     newWalletAcctList.push(newAccountAddr);
     var addAccountLabelInput = document.getElementById('addAccountLabelInput');
     var newAccountLabel = addAccountLabelInput.value;

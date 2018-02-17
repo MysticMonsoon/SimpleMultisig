@@ -65,6 +65,10 @@ function loadWalletLoadHandler() {
     var loadWalletAddrInput = document.getElementById('loadWalletAddrInput');
     var walletAddr = loadWalletAddrInput.value;
     console.log('loadWalletLoadHandler: walletAddr = ' + walletAddr);
+    if (!common.web3.isAddress(walletAddr)) {
+	alert('Error!\n\n' + walletAddr + ' is not a valid address!');
+	return;
+    }
     var abi = simpleMultiSigCompiled.abi;
     var contractInstance = ether.getContractInstance(walletAddr, abi);
     common.web3.eth.getCode(walletAddr, function(err, code) {
