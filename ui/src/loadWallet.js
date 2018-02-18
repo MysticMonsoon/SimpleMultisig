@@ -50,7 +50,7 @@ function makeLoadWalletForm() {
 function getOwner(contractInstance, idx, owners, cb) {
     contractInstance.ownersArr.call(idx, function(err, ownerX) {
 	console.log('loadWalletLoadHandler: err = ' + err + ', ownersArr(' + idx + ') = ' + ownerX);
-	if (!!ownerX) {
+	if (!!ownerX && common.web3.isAddress(ownerX)) {
 	    owners.push(ownerX);
 	    if (idx <= 10) {
 		getOwner(contractInstance, idx + 1, owners, cb);
