@@ -107,6 +107,7 @@ function loadWalletSaveHandler() {
     for (var i = 0; i < walletToSave.ownerAddrs.length; ++i)
 	walletToSave.ownerLabels[i] = ownerLabelInputs[i].value;
     common.saveWallet(walletToSave);
+    alert('Wallet Saved');
 }
 
 
