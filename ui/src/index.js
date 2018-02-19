@@ -172,6 +172,15 @@ function newWalletDeployHandler() {
 	sortedAcctList.push(newWalletAcctList[i]);
     if (sortedAcctList.length > 1)
 	sortedAcctList.sort(ether.addressCompare);
+    var sortedLabelList = [];
+    for (var i = 0; i < sortedAcctList.length; ++i) {
+	for (var j = 0; j < newWalletLabelList.length; ++j) {
+	    if (newWalletAcctList[j] == sortedAcctList[i]) {
+		sortedLabelList.push(newWalletLabelList[j]);
+		break;
+	    }
+	}
+    }
     console.log('newWalletDeployHandler: threshold = ' + threshold);
     var parmsHex = ether.abi_encode_SimpleMultiSig_parms(threshold.toString(16), sortedAcctList);
     ether.deployContract(abi, bin, parmsHex, 0, function(err, txid, contractInstance) {
@@ -186,7 +195,7 @@ function newWalletDeployHandler() {
 		//save this wallet
 		var addWalletNameInput = document.getElementById('addWalletNameInput');
 		var name = addWalletNameInput.value;
-		var walletToSave = new common.Wallet(name, receipt.contractAddress, newWalletLabelList, newWalletAcctList, threshold);
+		var walletToSave = new common.Wallet(name, receipt.contractAddress, sortedLabelList, sortedAcctList, threshold);
 		common.saveWallet(walletToSave);
 		console.log('newWalletDeployHandler: wallet ' + name + ' saved');
 	    });
