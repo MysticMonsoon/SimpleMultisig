@@ -42,7 +42,6 @@ function makeTransactionForm() {
     var transactionExecuteButton = document.getElementById('transactionExecuteButton');
     transactionExecuteButton.removeEventListener('click', executeHandler);
     transactionExecuteButton.addEventListener('click', executeHandler);
-    transactionExecuteButton.disabled = true;
 }
 
 
@@ -102,6 +101,8 @@ function transactionWalletView(contractAddr) {
     common.clearDivChildren(viewWalletAccountsListDiv);
     listAccounts(wallet.ownerAddrs, wallet.ownerLabels, transactionAccountsListDiv);
     viewWalletSaveButton.disabled = true;
+    var transactionExecuteButton = document.getElementById('transactionExecuteButton');
+    transactionExecuteButton.disabled = true;
 }
 
 function executeHandler() {
