@@ -68,6 +68,8 @@ function transactionWalletView(contractAddr) {
     var transactionTransactionValueInput = document.getElementById('transactionTransactionValueInput');
     transactionTransactionValueInput.value = '';
     transactionTransactionValueInput.onchange = hashHandler;
+    var transactionUnitSelector = document.getElementById('transactionUnitSelector');
+    transactionUnitSelector.onchange = hashHandler;
     var transactionTransactionNonceInput = document.getElementById('transactionTransactionNonceInput');
     transactionTransactionNonceInput.value = '';
     transactionTransactionNonceInput.onchange = hashHandler;
@@ -113,9 +115,14 @@ function executeHandler() {
     var sigV = [];
     var transactionTransactionToInput = document.getElementById('transactionTransactionToInput');
     var transactionTransactionValueInput = document.getElementById('transactionTransactionValueInput');
+    var transactionUnitSelector = document.getElementById('transactionUnitSelector');
     var transactionTransactionData = document.getElementById('transactionTransactionData');
     var destination = transactionTransactionToInput.value;
     var value = transactionTransactionValueInput.value;
+    var units = transactionUnitSelector.value;
+    if (units == 'ETH')
+	value = common.web3.toWei(value, 'ether').toString();
+    console.log('executeHandler: value = ' + value);
     var data = transactionTransactionData.value;
     for (var i = 0; i < ownerSigInputs.length; ++i) {
         var sig = ownerSigInputs[i].value;
@@ -157,6 +164,12 @@ function hashHandler() {
     }
     var transactionTransactionValueInput = document.getElementById('transactionTransactionValueInput');
     var value = transactionTransactionValueInput.value;
+    var transactionUnitSelector = document.getElementById('transactionUnitSelector');
+    var units = transactionUnitSelector.value;
+    console.log('hashHandler: units = ' + units);
+    if (units == 'ETH')
+	value = common.web3.toWei(value, 'ether').toString();
+    console.log('hashHandler: value = ' + value);
     var valueHex = common.web3.toHex(value);
     var transactionTransactionData = document.getElementById('transactionTransactionData');
     var data = transactionTransactionData.value;

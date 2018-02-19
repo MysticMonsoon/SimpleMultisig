@@ -8,7 +8,7 @@
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Lato:300|Roboto:300i" rel="stylesheet">
     <script type="text/javascript" src="js/jquery-3.2.1.js"></script>
-    <script type="text/javascript" src="bundle/index_TIMESTAMP_1519063978_.js"></script>
+    <script type="text/javascript" src="bundle/index_TIMESTAMP_1519077557_.js"></script>
 
     <script>
       $(document).ready(function() {
@@ -152,7 +152,11 @@
 	<span class="min-prompt">To:</span>
 	<input id="transactionTransactionToInput" size="50" placeholder="To address"/>
 	<span class="prompt">Value:&nbsp;</span>
-	<input id="transactionTransactionValueInput" size="20" placeholder="Value (in Wei!)"/>
+	<input id="transactionTransactionValueInput" size="20" placeholder="Value"/>
+	<select id="transactionUnitSelector">
+	  <option value="ETH" selected>Eth</option>
+	  <option value="WEI">Wei</option>
+	</select>
 	<span class="prompt">Nonce:&nbsp;</span>
 	<input id="transactionTransactionNonceInput" size="10" placeholder="Nonce"/>
 	<div id="transactionTransactionDataDiv">

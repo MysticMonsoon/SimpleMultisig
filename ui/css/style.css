@@ -99,8 +99,12 @@ body {
     padding: 10px;
 }
 
-#transactionTransactionToInput, #transactionTransactionValueInput, #transactionTransactionNonceInput, #transactionTransactionData, #transactionTransactionHash {
+#transactionTransactionToInput, #transactionUnitSelector, #transactionTransactionNonceInput, #transactionTransactionData, #transactionTransactionHash {
     margin-right: 20px;
+    font-size: 14px;
+}
+#transactionTransactionValueInput {
+    margin-right: 1px;
     font-size: 14px;
 }
 #transactionAccountsListDiv {
