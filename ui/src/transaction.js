@@ -119,13 +119,16 @@ function executeHandler() {
     for (var i = 0; i < ownerSigInputs.length; ++i) {
         var sig = ownerSigInputs[i].value;
 	sig = ethUtils.stripHexPrefix(sig);
-        var r = sig.substring(0, 64);
-        var s = sig.substring(64, 128);
-        var v = sig.substring(128, 130);
-        var vBN = new BN(v);
-        sigR.push(r);
-        sigS.push(s);
-        sigV.push(vBN);
+	if (!!sig) {
+            console.log('executeHandler: owner ' + i + ': sig = ' + sig);
+	    var r = '0x' + sig.substring(0, 64);
+	    var s = '0x' + sig.substring(64, 128);
+	    var v = '0x' + sig.substring(128, 130);
+            console.log('executeHandler: owner ' + i + ': v = ' + v + ', r = ' + r + ', s = ' + s);
+            sigR.push(r);
+            sigS.push(s);
+            sigV.push(v);
+	}
     }
     var abi = simpleMultiSigCompiled.abi;
     var contractInstance = ether.getContractInstance(walletToSave.contractAddr, abi);
