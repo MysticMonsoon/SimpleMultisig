@@ -1,16 +1,18 @@
+/*
+ * user interface for simple multisig wallet - written for riverdimes, inc.
+ *
+ * @author Pratyush Bhatt - 2018
+ *
+ * main dispacther (also handled new wallet function)
+ *
+ */
 
-//
-// deployed @: 0xDceCE8aADcbF7e3C6E8Ec9e9452f9940B4790352
-//
 var common = require('./common');
 var simpleMultiSigCompiled = require('./simpleMultiSigCompiled');
 var ether = require('./ether');
 var loadWallet = require('./loadWallet');
 var viewWallet = require('./viewWallet');
 var transaction = require('./transaction');
-//
-var Buffer = require('buffer/').Buffer;
-var BN = require("bn.js");
 //
 var newWalletAcctList   = [];
 var newWalletLabelList  = [];

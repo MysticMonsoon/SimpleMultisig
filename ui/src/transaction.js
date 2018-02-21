@@ -1,10 +1,15 @@
+/*
+ * user interface for simple multisig wallet - written for riverdimes, inc.
+ *
+ * @author Pratyush Bhatt - 2018
+ *
+ * handle transactions
+ *
+ */
 
 var common = require('./common');
 var ether = require('./ether');
 var simpleMultiSigCompiled = require('./simpleMultiSigCompiled');
-var Buffer = require('buffer/').Buffer;
-var BN = require("bn.js");
-const keccak = require('keccakjs');
 var ethUtils = require('ethereumjs-util');
 const web3Utils = require('web3-utils');
 
@@ -176,7 +181,6 @@ function hashHandler() {
     var transactionTransactionNonceInput = document.getElementById('transactionTransactionNonceInput');
     var nonce = transactionTransactionNonceInput.value;
     var nonceHex = common.web3.toHex(nonce);
-    //bytes32 txHash = keccak256(byte(0x19), byte(0), address(this), destination, value, data, nonce);
     try {
         var destination = transactionTransactionToInput.value;
         var txHashHex = web3Utils.soliditySha3({type: 'uint8',    value: '0x19'},

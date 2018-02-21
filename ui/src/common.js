@@ -1,6 +1,11 @@
-//
-// common functions -- no dependancies!
-//
+/*
+ * user interface for simple multisig wallet - written for riverdimes, inc.
+ *
+ * @author Pratyush Bhatt - 2018
+ *
+ * common functions -- no dependancies here!
+ *
+ */
 
 var common = module.exports = {
 

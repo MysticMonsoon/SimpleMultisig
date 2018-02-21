@@ -1,10 +1,11 @@
-//
-// SimpleMultiSigCompiled
-//
-
-//
-// glabal vars
-//
+/*
+ * user interface for simple multisig wallet - written for riverdimes, inc.
+ *
+ * @author Pratyush Bhatt - 2018
+ *
+ * abi, bin, help strings relating to simple multisig contract
+ *
+ */
 
 var SimpleMultiSigCompiled = module.exports = {
 

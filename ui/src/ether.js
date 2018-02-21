@@ -1,7 +1,12 @@
+/*
+ * user interface for simple multisig wallet - written for riverdimes, inc.
+ *
+ * @author Pratyush Bhatt - 2018
+ *
+ * shortcut fcns related to web3.eth
+ *
+ */
 
-//
-// fcns related to web3.eth
-//
 var common = require('./common');
 var ethUtils = require('ethereumjs-util');
 var ethtx = require('ethereumjs-tx');
