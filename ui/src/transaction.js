@@ -129,7 +129,7 @@ function executeHandler() {
 	value = common.web3.toWei(value, 'ether').toString();
     console.log('executeHandler: value = ' + value);
     var data = transactionTransactionData.value;
-    for (var i = 0; i < ownerSigInputs.length; ++i) {
+    for (var i = 0; i < ownerSigInputs.length && i < walletToSave.threshold; ++i) {
         var sig = ownerSigInputs[i].value;
 	sig = ethUtils.stripHexPrefix(sig);
 	if (!!sig) {
