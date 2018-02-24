@@ -54,9 +54,6 @@ function transactionWalletSelectorHandler() {
     console.log('transactionWalletSelectorHandler');
     common.hideDiv(document.getElementById('statusDiv'));
     common.hideDiv(document.getElementById('statusContentDiv'));
-    //everything else is initialized in transactionWalletView
-    var transactionTransactionHashInput = document.getElementById('transactionTransactionHashInput');
-    transactionTransactionHashInput.value = '';
     var transactionWalletSelector = document.getElementById("transactionWalletSelector");
     var contractAddr = transactionWalletSelector.value;
     transactionWalletView(contractAddr);
@@ -67,6 +64,8 @@ function transactionWalletView(contractAddr) {
     var wallet = common.getWallet(contractAddr);
     walletToSave = wallet;
     //init transaction data
+    var transactionTransactionHashInput = document.getElementById('transactionTransactionHashInput');
+    transactionTransactionHashInput.value = '';
     var transactionTransactionToInput = document.getElementById('transactionTransactionToInput');
     transactionTransactionToInput.value = '';
     transactionTransactionToInput.onchange = hashHandler;
@@ -156,7 +155,8 @@ function executeHandler() {
 	    var statusContentDiv = document.getElementById('statusContentDiv');
 	    common.waitForTXID(txid, 'multisig transaction', statusDiv, statusContentDiv, function(err, receipt) {
 		console.log('executeHandler: receipt.status =  ' + receipt.status + ' (1 => success)');
-		transactionWalletSelectorHandler();
+		alert('multisig transaction complete. status = ' + ((!err && receipt.status == 1) ? 'success' : 'error'));
+		transactionWalletView(walletToSave.contractAddr);
 	    });
 	}
     });

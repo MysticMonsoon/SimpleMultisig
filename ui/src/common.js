@@ -138,7 +138,7 @@ var common = module.exports = {
 	var statusText = document.createTextNode('No status yet...');
 	//status div starts out hidden
 	common.showDiv(statusDiv);
-	common.showDiv(statusContentDiv);
+	common.showDiv(common.clearDivChildren(statusContentDiv));
 	statusContentDiv.appendChild(statusText);
 	var link = document.createElement('a');
 	link.href = 'https://etherscan.io/tx/' + txid;
@@ -153,7 +153,7 @@ var common = module.exports = {
 		    if (!!err || !!receipt) {
 			if (!err && !!receipt && receipt.status == 0)
 			    err = "Transaction Failed with REVERT opcode";
-			statusText.textContent = (!!err) ? 'Error in ' + desc + ' transaction: ' + err : desc + ' transaction succeeded!';
+			statusText.textContent = (!!err) ? ('Error in ' + desc + ' transaction: ' + err) : (desc + ' transaction succeeded!');
 			console.log('transaction is in block ' + (!!receipt ? receipt.blockNumber : 'err'));
 			//statusText.textContent = desc + ' transaction succeeded!';
 			clearInterval(timer);
@@ -168,16 +168,19 @@ var common = module.exports = {
 
     hideDiv: function(div) {
 	div.className = (div.className).replace('smwVisible', 'smwHidden');
+	return(div);
     },
 
     showDiv: function(div) {
 	div.className = (div.className).replace('smwHidden', 'smwVisible');
+	return(div);
     },
 
     clearDivChildren: function(div) {
 	while (div.hasChildNodes()) {
             div.removeChild(div.lastChild);
 	}
+	return(div);
     },
 
 };
