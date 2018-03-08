@@ -213,11 +213,11 @@ function sigHandler() {
         if (!!sig) {
             var addr = ether.ecrecover(hexMsg, sig);
             console.log('sigHandler: got addr = ' + addr + ' from sig #' + i);
-            if (addr === walletToSave.ownerAddrs[i]) {
+            if (addr.toLowerCase() === walletToSave.ownerAddrs[i].toLowerCase()) {
                 ++sigCount;
             } else {
                 alert('Signature for owner #' + i.toString(10) + ' (' + walletToSave.ownerLabels[i] + ') does not match!\n\n' +
-                      'Either the sinature is from a different account, or the transaction that was signed is different from ' +
+                      'Either the signature is from a different account, or the transaction that was signed is different from ' +
                       'the currently displayed transaction.');
             }
         }
