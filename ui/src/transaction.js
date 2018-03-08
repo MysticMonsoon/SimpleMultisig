@@ -266,7 +266,7 @@ function listAccounts(ownerAddrs, ownerLables, div) {
         sig.onchange = sigHandler;
         sig.style['text-overflow'] = 'ellipsis';
         ownerSigInputs.push(sig);
-        if (ownerAddrs[i].trim() == common.web3.eth.accounts[0]) {
+        if (ownerAddrs[i].trim().toLowerCase() == common.web3.eth.accounts[0].toLowerCase()) {
             mySigInput = sig;
             sig.disabled = true;
         }
