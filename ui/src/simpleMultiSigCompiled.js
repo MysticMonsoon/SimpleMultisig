@@ -21,8 +21,8 @@ var SimpleMultiSigCompiled = module.exports = {
 	'The contract code for this Simple MultiSig Wallet was written by Christian Lundkvist.<br/>' +
 	'Many thanks to Mr. Lundkvist for this contribution to the Ethereum community.<p/>' +
 	'This front-end (website) code that interfaces-to the Simple MultiSig Wallet was written<br/>' +
-	'by Pratush Bhatt, for Riverdimes, Inc. The source code is open-source and is available<br/>' +
-	'on <a href="https://github.com/MysticMonsoon/TokenAuction" target="_blank">github</a>.<p/>' +
+	'by Pratyush Bhatt, for Riverdimes, Inc. The source code is open-source and is available<br/>' +
+	'on <a href="https://github.com/MysticMonsoon/SimpleMultisig" target="_blank">github</a>.<p/>' +
 	'The following copyright notice applies only to the front-end. A similar copyright covers<br/>' +
 	'the contract code.<p/>' +
 	'<br/>' +
